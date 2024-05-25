@@ -1,0 +1,42 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url("C:\Users\Dell\Desktop\Web Dev\PBL1\assets\images");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.top-nav {
+    background-color: #FFBB5C;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.nav-link {
+    color: #fff !important;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.main-content {
+    margin-top: 20px;
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #FF9B50;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #E25E3E;
+}

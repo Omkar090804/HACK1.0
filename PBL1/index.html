@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodiversity Conservation Donation Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header class="content">
+        <h1>Biodiversity Conservation Donation </h1>
+        <nav>
+            <a href="about.html">About</a>
+            <a href="history.html">History</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+
+            
+        </nav>
+        <hr>
+       
+        <p id="welcomeMessage">Welcome to the Biodiversity Conservation Donation Page</p>
+    </header>
+    <div class="carousel-container">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="./assets/tempimag22.jpeg" class="d-block w-10 "  alt="img1">
+              </div>
+              <div class="carousel-item">
+                <img src="./assets/images/temple img3.jpg" class="d-block w-10 "  alt="img2">
+              </div>
+              <div class="carousel-item">
+                <img src="./assets/images/templeimg 7.jpg" class="d-block w-10 " alt="img3">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    
+
+    <div class="container" id="selectionForm">
+        <h2>Select User Type</h2>
+        <select id="userTypeSelect">
+            <option value="user">User</option>
+            <option value="authority">Authority</option>
+        </select>
+        <button onclick="showSignupOrLogin()">Next</button>
+    </div>
+
+    <div class="container hidden" id="signupOrLoginForm">
+        <h2>Select Action</h2>
+        <select id="actionSelect">
+            <option value="signup">Signup</option>
+            <option value="login">Login</option>
+        </select>
+        <button onclick="showForm()">Next</button>
+    </div>
+
+    <div class="container hidden" id="formContainer">
+        <h2 id="formTitle"></h2>
+        <form id="loginSignupForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="container hidden" id="donationFormContainer">
+        <h2>Make a Donation</h2>
+        <form id="donationForm">
+            <input type="text" id="templeAddress" placeholder="Temple Address" required>
+            <input type="number" id="donationAmount" placeholder="Donation Amount" required>
+            <input type="submit" value="Donate">
+        </form>
+    </div>
+
+    <script>
+        function showSignupOrLogin() {
+            document.getElementById('selectionForm').classList.add('hidden');
+            document.getElementById('signupOrLoginForm').classList.remove('hidden');
+            resetFormFields();
+        }
+
+        function showForm() {
+            var userType = document.getElementById('userTypeSelect').value;
+            var action = document.getElementById('actionSelect').value;
+            var formTitle = action.charAt(0).toUpperCase() + action.slice(1) + ' ' + userType;
+            
+            document.getElementById('signupOrLoginForm').classList.add('hidden');
+            document.getElementById('formContainer').classList.remove('hidden');
+            document.getElementById('formTitle').innerText = formTitle;
+            if (userType === "authority") {
+                document.getElementById('loginSignupForm').action = "./public/welcome.html"; // Redirect to welcome page for authority
+            } else {
+                document.getElementById('loginSignupForm').action = "./public/donationpage.html"; // Redirect to donation page for user
+            }
+            resetFormFields();
+        }
+
+        // Function to reset the form fields
+        function resetFormFields() {
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('templeAddress').value = '';
+            document.getElementById('donationAmount').value = '';
+        }
+
+        // Simulating form submission for login/signup
+        document.getElementById("loginSignupForm").addEventListener("submit", function(event){
+            event.preventDefault(); // Prevent actual form submission for demonstration purpose
+            
+            // Redirect to appropriate page after successful login or signup
+            var userType = document.getElementById('userTypeSelect').value;
+            if (userType === "authority") {
+                window.location.href = "./public/welcome.html";
+            } else {
+                window.location.href = "./public/donationpage.html";
+            }
+        });
+
+        // Donation form submission
+        document.getElementById("donationForm").addEventListener("submit", function(event){
+            event.preventDefault(); // Prevent actual form submission for demonstration purpose
+            
+            // Here you can handle the donation submission, for demonstration purpose, let's just alert
+            alert("Donation Successful!");
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

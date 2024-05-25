@@ -1,0 +1,23 @@
+body {
+    background-image: url('./assets/images/white\ imag.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif; 
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, p {
+    color: black; 
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold ;
+}
+
+
+img {
+    max-width: 50%; 
+    display: block;
+    margin: 0 auto; 
+    border-radius: 10px; 
+}

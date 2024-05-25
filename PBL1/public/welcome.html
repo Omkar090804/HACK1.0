@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./welcome.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .sidebar {
+            background-color: #000 !important; /* Black color */
+            color: #fff; /* White text */
+        }
+        .nav-link.dashboard {
+            color: #fff !important; /* White color */
+            background-color: #000 !important; /* Black color */
+        }
+        .nav-link.dashboard.active {
+            background-color: #333 !important; /* Darker shade of black */
+        }
+        .welcome-message {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin: 0;
+        }
+        p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link dashboard active" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#transactionHistory">Transaction History</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#expenses">Expenses</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="welcome-message">
+    <h1>Welcome</h1>
+    <p>Thank you for signing up! You are now a registered authority. You can manage temple donations and other tasks from here.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+/* styles.css */
+
+body {
+    background-image: url('./assets/images/white\ imag.jpg'); 
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    color: black; 
+}
+
+table {
+    margin-top: 50px; 
+    width: 80%; 
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid white; 
+    font-weight: bold; 
+    font-size: 16px; 
+    color: black; 
+}
+
+th {
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+p{
+    font-weight: bold;
+}
+th{
+    color: white;
+}

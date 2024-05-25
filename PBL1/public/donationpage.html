@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./donation-page.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .thank-you {
+            font-size: 32px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .vasudhaiva-kutumbakam {
+            font-size: 40px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        /* Custom styles for the sidebar */
+        .sidebar {
+            background-color: #000 !important; /* Black color */
+            color: #fff; /* White text */
+        }
+        /* Custom styles for Dashboard link */
+        .nav-link.dashboard {
+            color: #fff !important; /* White color */
+            background-color: #000 !important; /* Black color */
+        }
+        /* Custom styles for active Dashboard link */
+        .nav-link.dashboard.active {
+            background-color: #333 !important; /* Darker shade of black */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link dashboard active" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#transactionHistory">Transaction History</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div class="main-content">
+                <!-- Removed the "Make a Donation" comment -->
+                <h1 style="text-align: center;">Make a Donation</h1>
+                <form id="donationForm">
+                    <label for="templeAddress">Temple Address:</label><br>
+                    <input type="text" id="templeAddress" name="templeAddress" class="form-control"><br>
+                    <label for="donationAmount">Donation Amount:</label><br>
+                    <input type="number" id="donationAmount" name="donationAmount" class="form-control"><br>
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                </form>
+
+                <div id="submissionMessage" style="text-align: center; display: none;">
+                    <p class="thank-you">Thank You</p>
+                    <p class="vasudhaiva-kutumbakam">वसुधैव कुटुंबकम्</p>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+    document.getElementById("donationForm").addEventListener("submit", function(event){
+        event.preventDefault(); // Prevent default form submission
+
+        // Hide the form
+        document.getElementById("donationForm").style.display = "none";
+        
+        // Show submission message
+        document.getElementById("submissionMessage").style.display = "block";
+        
+        // Optional: You can reset the form fields after submission
+        document.getElementById("templeAddress").value = "";
+        document.getElementById("donationAmount").value = "";
+
+        // Scroll to the submission message
+        document.getElementById("submissionMessage").scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>

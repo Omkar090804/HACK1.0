@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container" id="selectionForm">
+        <h2>Select User Type</h2>
+        <select id="userTypeSelect">
+            <option value="user">User</option>
+            <option value="authority">Authority</option>
+        </select>
+        <button onclick="showSignupOrLogin()">Next</button>
+    </div>
+
+    <div class="container hidden" id="signupOrLoginForm">
+        <h2>Select Action</h2>
+        <select id="actionSelect">
+            <option value="signup">Signup</option>
+            <option value="login">Login</option>
+        </select>
+        <button onclick="showForm()">Next</button>
+    </div>
+
+    <div class="container hidden" id="formContainer">
+        <h2 id="formTitle"></h2>
+        <form id="loginSignupForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="container hidden" id="donationFormContainer">
+        <h2>Make a Donation</h2>
+        <form id="donationForm">
+            <input type="text" id="templeAddress" placeholder="Temple Address" required>
+            <input type="number" id="donationAmount" placeholder="Donation Amount" required>
+            <input type="submit" value="Donate">
+        </form>
+    </div>
+
+    <script>
+        function showSignupOrLogin() {
+            document.getElementById('selectionForm').classList.add('hidden');
+            document.getElementById('signupOrLoginForm').classList.remove('hidden');
+            resetFormFields();
+        }
+
+        function showForm() {
+            var userType = document.getElementById('userTypeSelect').value;
+            var action = document.getElementById('actionSelect').value;
+            var formTitle = action.charAt(0).toUpperCase() + action.slice(1) + ' ' + userType;
+            
+            document.getElementById('signupOrLoginForm').classList.add('hidden');
+            document.getElementById('formContainer').classList.remove('hidden');
+            document.getElementById('formTitle').innerText = formTitle;
+            if (userType === "authority") {
+                document.getElementById('loginSignupForm').action = "./public/welcome.html"; // Redirect to welcome page for authority
+            } else {
+                document.getElementById('loginSignupForm').action = "./public/donationpage.html"; // Redirect to donation page for user
+            }
+            resetFormFields();
+        }
+
+        // Function to reset the form fields
+        function resetFormFields() {
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('templeAddress').value = '';
+            document.getElementById('donationAmount').value = '';
+        }
+
+        // Simulating form submission for login/signup
+        document.getElementById("loginSignupForm").addEventListener("submit", function(event){
+            event.preventDefault(); // Prevent actual form submission for demonstration purpose
+            
+            // Redirect to appropriate page after successful login or signup
+            var userType = document.getElementById('userTypeSelect').value;
+            if (userType === "authority") {
+                window.location.href = "./public/welcome.html";
+            } else {
+                window.location.href = "./public/donationpage.html";
+            }
+        });
+
+        // Donation form submission
+        document.getElementById("donationForm").addEventListener("submit", function(event){
+            event.preventDefault(); // Prevent actual form submission for demonstration purpose
+            
+            // Here you can handle the donation submission, for demonstration purpose, let's just alert
+            alert("Donation Successful!");
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
