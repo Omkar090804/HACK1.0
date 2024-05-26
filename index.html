@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style> 
+         
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: lightblue; /* Set a nice background color */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("https://images.pexels.com/photos/574313/pexels-photo-574313.jpeg?auto=compress&cs=tinysrgb&w=600") ;
+    
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background-color: #f0f0f0; /* Set a light shade of gray */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #007bff; /* Set a nice blue color for headings */
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="submit"],
+        input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        #connectWallet{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+
+        }
+
+        input[type="submit"],
+        input[type="button"] {
+            margin: 6px 9px;
+            width: 110px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover,
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+        .separation{
+            border: 2px solid grey;
+            margin-bottom: 10px;
+        }
+        .button1{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bimg{
+            height: 100vh;
+             /* background-image: url(""); */
+             background: url("big-data-concept-abstract-background_52683-25197.jpg");
+            min-height: 100vh;
+            
+   
+    
+    background-size: 100vw 100vh;
+        }
+        
+     /* Your existing CSS styles */
+      /* Navbar styles */
+      .navbar {
+            background-color:grey;
+            overflow: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color:grey;
+            overflow: hidden;
+            width:100%;
+            justify-content: space-between; 
+        }
+
+        .navbar a {
+            display: inline-block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #0056b3;
+        }
+        .navbar-right {
+            float: right; /* Aligns items to the right */
+        }
+        #recipientSelect {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px; /* Adjust width as needed */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        #recipientSelect  img{
+            width:12px;
+
+        }
+        /* Style for the options */
+        #recipientSelect option {
+            font-size: 16px;
+        }
+        .custom-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .custom-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .custom-dropdown-content img {
+            width: 50px; /* Adjust image width as needed */
+            height: auto;
+            vertical-align: middle;
+        }
+
+        .custom-dropdown-content p {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .custom-dropdown:hover .custom-dropdown-content {
+            display: block;
+        }
+        .custom-select {
+            position: relative;
+            display: none;
+        }
+        .custom-select-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 200px; /* Adjust width as needed */
+        }
+
+        .select-selected {
+            background-color: #f9f9f9;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .select-selected:hover {
+            background-color: #f9f9f9;
+        }
+
+        .select-selected:after {
+            position: absolute;
+            content: "";
+            top: 14px;
+            right: 10px;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-color: #666 transparent transparent transparent;
+        }
+
+        .select-selected.select-arrow-active:after {
+            border-color: transparent transparent #666 transparent;
+            top: 7px;
+        }
+
+        .select-items div,
+        .select-selected {
+            display: flex;
+            align-items: center;
+        }
+
+        .select-items {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 99;
+        }
+
+        .select-items div:hover {
+            background-color: #666;
+            color: white;
+        }
+        .selector{
+            width: 350px;
+
+        }
+        #selectorField{
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            box-sizing: border-box;
+            background:rgba(255, 255, 255, 0.7) ;
+            border-radius: 6px;
+        }
+        .custom-options {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+            width: 100%;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .custom-option {
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .custom-option img {
+            width: 40px; /* Adjust image width as needed */
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .custom-option:hover {
+            background-color: #ddd;
+        }
+
+        .custom-select-wrapper.active .custom-options {
+            display: block;
+        }
+
+        /* Styling for selected option */
+        .custom-selected {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Styling for selected option label */
+        .custom-selected-label {
+            margin-left: 10px;
+        }
+        #recipientSelect {
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            width: 200px; /* Adjust width as needed */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            color: #444;
+            cursor: pointer;
+            appearance: none; /* Remove default arrow icon */
+        }
+
+        #recipientSelect:focus {
+            outline: none; /* Remove outline on focus */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add shadow on focus */
+        }
+
+        /* Style for the options */
+        #recipientSelect option {
+            background-color: #f9f9f9;
+            color: #444;
+        }
+
+        /* Hover effect for options */
+        #recipientSelect option:hover {
+            background-color: #e9e9e9;
+        }
+        #transactionForm {
+    display: none;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a id="aboutLink" href="/portfolio">Portfolio</a>
+        <a id="transactionHistoryLink" href="/temples">Transaction History</a>
+    </div>
+    <div class="bimg"></div>
+    <div class="container-fluid"></div>
+    <div class="container">
+        <h1>User Dashboard</h1>
+        <div class="separation">
+
+        </div>
+    <div class="container1">
+
+        <input type="button" id="connectWallet" value="Connect Wallet">
+        <form id="paymentForm" style="display: none;" action="/submit" method="post">
+           <!--<label for="recipientAddress">Recipient Address:</label>
+            <input type="text" id="recipientAddress" name="recipientAddress" placeholder="Enter recipient address">
+           -->
+ <select id="recipientSelect" name="recipientAddress">
+                <option value="">Select a temple</option>
+                <option value="temple1">SIT GANPATI Temple</option>
+                <option value="temple2">SIU TEMPLE</option>
+                </select>
+            </div>
+            <label for="amount">Amount (ETH):</label>
+          
+            
+                    <!-- Add more options as needed -->
+               
+              <!--- <div class="custom-select" style="width:200px;">
+                    <select id="recipientSelect" name="recipientAddress" style="display:none;">
+                        <option value="">Select a temple</option>
+                        <option value="temple1">Temple 1</option>
+                        <option value="temple2">Temple 2</option>
+                 
+                    </select>
+                    <div class="select-selected">Select a temple</div>
+                    <div class="select-items">
+                        <div><img src="temple1.jpg" alt=""><span>Temple 1</span></div>
+                        <div><img src="temple2.jpg" alt=""><span>Temple 2</span></div>
+                    </div>
+                </div>
+                
+                <div class="custom-dropdown">
+                    <img src="temple.jpg" alt="">
+                    <p>SIT Ganpati Temple</p>
+                    <div class="custom-dropdown-content">
+                        <ul>
+                            <li><img src="temple.jpg" alt=""><p>SIT Ganpati Temple</p></li>
+                            <li><img src="temple.jpg" alt=""><p>SIU Temple</p></li>
+                             Add more temples as needed 
+                        </ul>
+                    </div>
+                </div>-->
+                <!--<div class="selector">
+                    <div id="selectfield">
+                        <p>select temple </p>
+                    </div>
+
+                </div>-->
+            <input type="text" id="amount" name="amount" placeholder="Enter amount in ETH">
+            <div class="button1">
+            <input type="submit" id="pay-button" value="download reciept">
+            <input type="button" id="send-button" value="Send">
+            </div>
+        </form>
+    <form id="transactionForm">
+        <label for="address">Enter Wallet Address:</label>
+        <input type="text" id="address" name="address" required>
+        <div class="button1">
+        <button type="submit">Fetch Transactions</button>
+        </div>
+    </form>
+    <div id="transactionHistory"></div>
+    </div>
+
+    <!-- Include Axios library -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js"></script>
+    <script>
+        const forwarderOrigin = 'http://localhost:3000';
+        let account; // Declare account variable globally
+
+        const initialize = () => {
+            const connectButton = document.getElementById('connectWallet');
+            const paymentForm = document.getElementById('paymentForm');
+            const { ethereum } = window;
+
+            const onboardMetaMaskClient = async () => {
+                if (!isMetamaskInstalled()) {
+                    console.log("MetaMask is not installed :(");
+                    connectButton.value = "Click here to install MetaMask";
+                    connectButton.onclick = installMetaMask;
+                } else {
+                    console.log("MetaMask is installed Hurray!!!!!");
+                    connectButton.onclick = showPaymentForm;
+                }
+            }
+
+            const showPaymentForm = () => {
+                paymentForm.style.display = 'block';
+                connectButton.style.display = 'none';
+            }
+            const connectMetaMask = async () => {
+                try {
+                    const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+                    account = accounts[0]; // Set the global account variable
+                    console.log(account); // Log the account
+                    return account;
+                } catch (err) {
+                    console.error("error occurred while connecting to MetaMask: ", err);
+                    throw err; // Propagate the error
+                }
+            }
+
+            const isMetamaskInstalled = () => {
+                return ethereum && ethereum.isMetaMask;
+            }
+
+            const installMetaMask = () => {
+                const onboarding = new MetaMaskOnboarding({ forwarderOrigin });
+                connectButton.value = "Installation in progress";
+                connectButton.disabled = true;
+                onboarding.startOnboarding();
+            }
+
+            onboardMetaMaskClient();
+        };
+        var recipientSelect = document.getElementById("recipientSelect");
+        var addressInput = document.getElementById("address");
+        var address=""
+        recipientSelect.addEventListener("change", function() {
+            var selectedValue = recipientSelect.value;
+
+            switch(selectedValue) {
+                case "temple1":
+                    address = "0xC33977F20465519013d6ECA876982e03C3000239";
+                    break;
+                case "temple2":
+                    address = "0xC33977F20465519013d6ECA876982e03C3000239";
+                    break;
+                // Add cases for more temples if needed
+                default:
+                    address = "";
+            }
+    console.log(address);
+    addressInput.value = address;
+        });
+       document.getElementById("send-button").addEventListener("click", event => {
+           //const address = document.getElementById('recipientAddress').value;
+            //console.log(address);--> // Log the recipient address
+            
+            const amount = document.getElementById('amount').value;
+            console.log(amount); // Log the amount
+
+            // Convert amount from ether to wei using ethers.js
+            const EtherToWei = ethers.utils.parseUnits(amount, "ether");
+            console.log(EtherToWei._hex);
+            let transactionParam = {
+                to:address,
+                from:"0x3D0a7b23B0b245203CfB39af68e62E6A915DcAaF",
+                value:EtherToWei._hex
+            };
+            ethereum.request({ method: 'eth_sendTransaction', params: [transactionParam] }).then(txhash => {
+                console.log(txhash);
+                checkTransactionconfirmation(txhash).then(r => alert(r));
+            });
+        });
+        function checkTransactionconfirmation(txhash) {
+            let checkTransactionLoop = () => {
+                return ethereum.request({ method: 'eth_getTransactionReceipt', params: [txhash] }).then(r => {
+                    if (r !== null) {
+                        return "transaction confirmed thank you for donating";
+                    } else {
+                        return checkTransactionLoop();
+                    }
+                    document.getElementById('pay-button').style.display = 'block';
+                });
+            };
+            return checkTransactionLoop();
+        }
+function checkTransactionLoop(txhash) {
+    return ethereum.request({ method: 'eth_getTransactionReceipt', params: [txhash] }).then(r => {
+        if (r !== null) {
+            return "Transaction confirmed. Thank you for donating!";
+        } else {
+            return checkTransactionLoop(txhash);
+        }
+    });
+}
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const customSelect = document.querySelector('.custom-select');
+            const dropdown = customSelect.querySelector('.custom-dropdown');
+            const options = customSelect.querySelectorAll('.custom-option');
+
+            dropdown.addEventListener('click', function() {
+                const dropdownOptions = this.nextElementSibling;
+                dropdownOptions.style.display = dropdownOptions.style.display === 'block' ? 'none' : 'block';
+            });
+
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    const value = this.dataset.value;
+                    const text = this.textContent.trim();
+                    const dropdownText = dropdown.querySelector('.custom-dropdown-text');
+                    dropdownText.textContent = text;
+                    dropdownText.insertAdjacentElement('afterbegin', this.querySelector('img').cloneNode(true));
+                    customSelect.querySelector('select').value = value;
+                    customSelect.querySelector('.custom-options').style.display = 'none';
+                });
+            });
+            const aboutLink = document.getElementById('aboutLink');
+            const transactionHistoryLink = document.getElementById('transactionHistoryLink');
+            const aboutSection = document.getElementById('about');
+            const transactionHistorySection = document.getElementById('transactionHistory');
+
+            // Hide sections initially
+            aboutSection.style.display = 'none';
+            transactionHistorySection.style.display = 'none';
+
+            // Function to hide all sections
+            function hideAllSections() {
+                aboutSection.style.display = 'none';
+                transactionHistorySection.style.display = 'none';
+            }
+
+            // Event listener for About Us link
+            aboutLink.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default link behavior
+                hideAllSections();
+                aboutSection.style.display = 'block';
+            });
+
+            // Event listener for Transaction History link
+            transactionHistoryLink.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default link behavior
+                hideAllSections();
+                transactionHistorySection.style.display = 'block';
+            });
+        });
+
+/*document.getElementById("send-button").addEventListener("click", async () => {
+    const address = document.getElementById('recipientAddress').value;
+    const amount = document.getElementById('amount').value;
+
+    // Convert amount from ether to wei using ethers.js
+    const EtherToWei = ethers.utils.parseUnits(amount, "ether");
+
+    const transactionParam = {
+        to: address,
+        from: "0x3D0a7b23B0b245203CfB39af68e62E6A915DcAaF",
+        value: EtherToWei._hex
+    };
+
+    try {
+        const txHash = await new Promise((resolve, reject) => {
+            ethereum.request({ method: 'eth_sendTransaction', params: [transactionParam] })
+            .then(resolve)
+            .catch(reject);
+            setTimeout(() => reject(new Error('Transaction not confirmed')), 15000); // Timeout after 15 seconds
+        });
+
+        console.log("Transaction Hash:", txHash);
+
+        // Make a POST request to the backend to submit transaction
+        fetch('/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                txHash: txHash, // Include txHash in the request body
+                recipientAddress: address,
+                amount: amount
+            })
+        })
+        .then(response => response.text())
+        .then(message => {
+            console.log(message); // Log response from the backend
+            alert(message); // Show alert with response message
+        })
+        .catch(error => {
+            console.error("Error submitting transaction:", error);
+            alert("Error submitting transaction");
+        });
+    } catch (error) {
+        console.error("Error sending transaction:", error);
+        alert("Error sending transaction");
+    }
+});
+
+async function fetchTransactions() {
+            const address = 0x3D0a7b23B0b245203CfB39af68e62E6A915DcAaF;
+            const etherscanAPI = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=XHPE752BG435HMQHN84EDKR`;
+
+            try {
+                const response = await axios.get(etherscanAPI);
+                const data = response.data;
+
+                const transactionsList = document.getElementById('transactionsList');
+                transactionsList.innerHTML = ''; // Clear previous transactions
+
+                data.result.forEach(transaction => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `Hash: ${transaction.hash}, Value: ${transaction.value}`;
+                    transactionsList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error("Error fetching transactions:", error);
+                alert("Error fetching transactions");
+            }
+        }
+
+
+async function fetchTransactions() {
+            const address = 0x3D0a7b23B0b245203CfB39af68e62E6A915DcAaF;
+            const etherscanAPI = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=XHPE752BG435HMQHN84EDKR`;
+
+            try {
+                const response = await axios.get(etherscanAPI);
+                const data = response.data;
+
+                const transactionsList = document.getElementById('transactionsList');
+                transactionsList.innerHTML = ''; // Clear previous transactions
+
+                data.result.forEach(transaction => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `Hash: ${transaction.hash}, Value: ${transaction.value}`;
+                    transactionsList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error("Error fetching transactions:", error);
+                alert("Error fetching transactions");
+            }
+        }
+*/
+// Frontend code (JavaScript)
+// Frontend code (JavaScript)
+async function fetchTransactions() {
+    event.preventDefault(); // Prevent default form submission
+
+    const address = '0x3D0a7b23B0b245203CfB39af68e62E6A915DcAaF';
+    const etherscanAPI = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=desc&apikey=ZYBG3U52UJCXHPE752BG435HMQHN84EDKR`;
+
+    try {
+        const response = await axios.get(etherscanAPI);
+        const data = response.data;
+        
+        if (!data || !data.result) {
+            throw new Error("No transaction data found");
+        }
+
+        const transactionsList = document.getElementById('transactionsList');
+        transactionsList.innerHTML = ''; // Clear previous transactions
+
+        const transactions = data.result.slice(0, 10); // Limiting to 10 transactions
+transactions.forEach(transaction => {
+    const amount = weiToEther(transaction.value);
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `
+        <strong>Hash:</strong> ${transaction.hash}<br>
+        <strong>From:</strong> ${transaction.from}<br>
+        <strong>To:</strong> ${transaction.to}<br>
+        <strong>Value:</strong> ${amount} ETH<br>
+        <strong>Timestamp:</strong> ${new Date(parseInt(transaction.timeStamp) * 1000)}<br>
+        <hr>
+    `;
+    transactionsList.appendChild(listItem);
+});    
+    } catch (error) {
+        console.error("Error fetching transactions:", error.message);
+        alert("Error fetching transactions");
+    }
+}
+function weiToEther(wei) {
+    return (wei / 1e18).toFixed(5); // Convert Wei to Ether with 5 decimal places
+}
+
+           
+        // Function to display transaction history on the webpage
+        function displayTransactionHistory(transactionHistory) {
+            const transactionHistoryDiv = document.getElementById("transactionDetails");
+            transactionHistoryDiv.innerHTML = ""; // Clear previous content
+
+            if (transactionHistory.length === 0) {
+                transactionHistoryDiv.innerText = "No transactions found.";
+            } else {
+                const ul = document.createElement("ul");
+                transactionHistory.forEach(transaction => {
+                    const li = document.createElement("li");
+                    li.textContent = `Amount: ${transaction.value}, Timestamp: ${new Date(parseInt(transaction.timeStamp) * 1000)}`;
+                    ul.appendChild(li);
+                });
+                transactionHistoryDiv.appendChild(ul);
+            }
+        }
+
+        document.getElementById("transactionForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const address = document.getElementById('address').value;
+            const etherscanAPI = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=ZYBG3U52UJCXHPE752BG435HMQHN84EDKR`;
+
+            try {
+                const response = await axios.get(etherscanAPI);
+                const data = response.data;
+
+                if (!data || !data.result) {
+                    throw new Error("No transaction data found");
+                }
+
+                displayTransactionHistory(data.result);
+            } catch (error) {
+                console.error("Error fetching transactions:", error.message);
+                alert("Error fetching transactions");
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', initialize);
+
+
+        // Function to display transaction history on the webpage
+        window.addEventListener('DOMContentLoaded', () => {
+            const dashboardBtn = document.getElementById('dashboardBtn');
+            const aboutSection = document.getElementById('about');
+            const transactionHistorySection = document.getElementById('transactionHistory');
+
+            // Hide sections initially
+            aboutSection.style.display = 'none';
+            transactionHistorySection.style.display = 'none';
+
+            // Toggle section visibility on button click
+            dashboardBtn.addEventListener('click', () => {
+                aboutSection.style.display = aboutSection.style.display === 'none' ? 'block' : 'none';
+                transactionHistorySection.style.display = transactionHistorySection.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+
+
+        window.addEventListener('DOMContentLoaded', initialize);
+    </script>
+</body>
+</html>

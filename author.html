@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./welcome.css" />
+    <style>
+      body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            /* Add background image */
+            background-image: url('https://t3.ftcdn.net/jpg/04/69/85/20/360_F_469852099_bO6ycWJoQXUyqVj9So2Dnfx6gVqSQAKF.jpg'); /* Replace 'your-background-image.jpg' with your image file path */
+            background-size: cover;
+            background-position: center;
+        }
+        .navbar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            color: #fff; /* Changed navbar text color */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+        }
+        .navbar-brand {
+            font-weight: bold; /* Make navbar brand text bold */
+            font-size: 24px; /* Increase navbar brand text size */
+        }
+        .navbar-nav .nav-link {
+            color: #14FDE4; /* Aqua color for nav links */
+            transition: 0.3s; /* Smooth transition */
+        }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black on hover or when active */
+            border-radius: 5px; /* Rounded corners */
+        }
+        .welcome-message {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            margin-top: 100px; /* Adjusted margin top */
+            max-width: 600px; /* Set max width to avoid stretching */
+            margin-left: auto; /* Center horizontally */
+            margin-right: auto; /* Center horizontally */
+        }
+        h1 {
+            margin: 0;
+            color: #333; /* Dark gray */
+            font-size: 36px; /* Larger font size */
+            margin-bottom: 20px; /* Increased bottom margin */
+        }
+        p {
+            margin: 5px 0;
+            color: #666; /* Gray */
+            font-size: 18px; /* Increased font size */
+        }
+        /* Additional styling */
+        /* You can add more custom styles here */
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Your Temple</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link dashboard active" href="#">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link dashboard active" href="/feedback">Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="admin">Transaction History</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="expensecopy.html">Expenses</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="welcome-message">
+    <h1>Welcome</h1>
+    <p>Thank you for signing up! You are now a registered authority. You can manage temple donations and other tasks from here.</p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
